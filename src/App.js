@@ -1,4 +1,4 @@
-import Router from "../../taskManager/front/src/router/Router";
+import Router from "./router/Router";
 
 function App() {
   return (

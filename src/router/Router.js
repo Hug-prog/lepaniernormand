@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../../../taskManager/front/src/pages/Home";
 import Categories from "../pages/Categories";
+import Home from "../pages/Home";
 import Product from "../pages/Product";
 
 export default function Router() {
