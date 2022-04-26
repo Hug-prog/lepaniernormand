@@ -1,8 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "./api/Category";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Router from "./router/Router";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, [dispatch]);
+  console.log(useSelector((state) => state));
+
   return (
     <div className="App">
       <Navbar />

@@ -9,9 +9,9 @@ export default function Navbar() {
         <button className="bg-second">o</button>
       </div>
       <nav>
-        <a href="#">Home</a>
-        <a href="#">Account</a>
-        <a href="#">Cart</a>
+        <a href="/home">Home</a>
+        <a href="/account">Account</a>
+        <a href="/cart">Cart</a>
       </nav>
     </div>
   );
