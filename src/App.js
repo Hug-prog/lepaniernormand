@@ -1,24 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "./api/Category";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Router from "./router/Router";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [dispatch]);
-  console.log(useSelector((state) => state));
-
   return (
-    <div className="App">
+    <div className="max-w-screen-2xl m-auto">
       <Navbar />
-      <div
-        className="static w-full"
-        style={{ minHeight: "80vh", marginTop: "5rem" }}
-      >
+      <div className=" w-full" style={{ minHeight: "80vh" }}>
         <Router />
       </div>
       <Footer />
