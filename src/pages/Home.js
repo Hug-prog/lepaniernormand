@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { getAllCategories } from "../api/Category";
-import { getAllProducts } from "../api/Product";
+import { getCategories } from "../api/Category";
 
 export default function Home() {
   useEffect(() => {
-    getAllCategories();
-    getAllProducts();
+    getCategories();
   });
 
   return (
