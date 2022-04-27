@@ -4,7 +4,7 @@ import Router from "./router/Router";
 
 function App() {
   return (
-    <div className="max-w-screen-2xl m-auto">
+    <div className="m-auto">
       <Navbar />
       <div className=" w-full" style={{ minHeight: "80vh" }}>
         <Router />

@@ -1,8 +1,11 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { ADD_PRODUCT_CART } from "../../constants/cart";
 
 export default function ProductCard({ product }) {
+  const dispatch = useDispatch();
   return (
     <div className="w-48 h-auto bg-slate-100 mt-4 m-auto pb-2">
       <Link to={"/"} className="flex justify-end">
@@ -11,7 +14,10 @@ export default function ProductCard({ product }) {
       <div className=" w-2/3 h-28 m-auto bg-slate-800"></div>
       <p className="mt-4 ml-3">{product.libelle}</p>
       <p className="font-bold ml-3">{product.price}</p>
-      <button className="mt-2 ml-3 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2">
+      <button
+        onClick={() => dispatch({ type: ADD_PRODUCT_CART, payload: product })}
+        className="mt-2 ml-3 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2"
+      >
         Ajouter au Pannier
       </button>
     </div>
