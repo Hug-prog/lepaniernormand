@@ -1,10 +1,23 @@
 import { API } from ".";
-import { GET_CATEGORIES } from "../constants/categories";
+import {
+  GET_CATEGORIES,
+  GET_PRODUCTSBYCATEGORIESID,
+} from "../constants/categories";
 
 export const getCategories = () => {
   return dispatch => {
     API.get("/api/categories")
       .then(res => dispatch({ type: GET_CATEGORIES, payload: res.data }))
+      .catch(err => console.log(err));
+  };
+};
+
+export const getProductByCategoryId = id => {
+  return dispatch => {
+    API.get("/api/categories/" + id)
+      .then(res =>
+        dispatch({ type: GET_PRODUCTSBYCATEGORIESID, payload: res.data })
+      )
       .catch(err => console.log(err));
   };
 };
