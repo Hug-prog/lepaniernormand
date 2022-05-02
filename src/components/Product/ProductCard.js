@@ -11,9 +11,21 @@ export default function ProductCard({ product }) {
       <Link to={"/"} className="flex justify-end">
         <AiOutlineHeart />
       </Link>
-      <div className=" w-2/3 h-28 m-auto bg-slate-800"></div>
-      <p className="mt-4 ml-3">{product.libelle}</p>
-      <p className="font-bold ml-3">{product.price}</p>
+
+      <Link
+        to={"/product"}
+        state={{
+          libelle: product.libelle,
+          price: product.price,
+          stock: product.stock,
+          description: product.description,
+        }}
+      >
+        <div className=" w-2/3 h-28 m-auto bg-slate-800"></div>
+        <p className="mt-4 ml-3">{product.libelle}</p>
+        <p className="font-bold ml-3">{product.price}</p>
+      </Link>
+
       <button
         onClick={() => dispatch({ type: ADD_PRODUCT_CART, payload: product })}
         className="mt-2 ml-3 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2"
