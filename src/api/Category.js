@@ -1,8 +1,6 @@
 import { API } from ".";
-import {
-  GET_CATEGORIES,
-  GET_PRODUCTSBYCATEGORIESID,
-} from "../constants/categories";
+import { GET_CATEGORIES } from "../constants/categories";
+import { GET_PRODUCTSBYCATEGORIESID } from "../constants/products";
 
 export const getCategories = () => {
   return dispatch => {

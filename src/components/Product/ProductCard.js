@@ -12,16 +12,13 @@ export default function ProductCard({ product }) {
         <AiOutlineHeart />
       </Link>
 
-      <Link
-        to={"/product"}
-        state={{
-          libelle: product.libelle,
-          price: product.price,
-          stock: product.stock,
-          description: product.description,
-        }}
-      >
-        <div className=" w-2/3 h-28 m-auto bg-slate-800"></div>
+      <Link to={"/product"} state={product.id}>
+        <div
+          className=" w-2/3 h-28 m-auto "
+          style={{
+            backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
+          }}
+        ></div>
         <p className="mt-4 ml-3">{product.libelle}</p>
         <p className="font-bold ml-3">{product.price}</p>
       </Link>
