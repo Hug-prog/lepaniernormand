@@ -44,7 +44,7 @@ export default function Home() {
       </div>
 
       <div className="mt-5 w-5/6 h-auto m-auto">
-        <h1 className="font-bold">Vendeurs</h1>
+        <h1 className="font-bold">Top Produits</h1>
         <div className="sm:flex sm:flex-wrap">
           {products.map((product, i) => (
             <ProductCard product={product} key={i} />

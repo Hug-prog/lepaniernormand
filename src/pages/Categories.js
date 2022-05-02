@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getProductByCategoryId } from "../api/Category";
-import Product from "../components/Product/Product";
+import ProductCard from "../components/Product/ProductCard";
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function Categories() {
     <div>
       {productsCateg
         ? productsCateg.map((product, i) => (
-            <Product product={product} key={i} />
+            <ProductCard product={product} key={i} />
           ))
         : ""}
     </div>
