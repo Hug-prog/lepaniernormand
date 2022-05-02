@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 export default function Product() {
   const location = useLocation();
-  const product = location.state;
+  const products = useSelector(state => state.productsReducer);
+  const product = products.find(product => product.id === location.state);
+
   return (
     <div className="w-sreen h-auto">
       <div className=" w-11/12 h-auto m-auto sm:flex sm:justify-center sm:items-center ">
@@ -19,7 +22,14 @@ export default function Product() {
         </div>
 
         <div className="w-2/3 mt-6 p-2 m-auto h-auto rounded bg-slate-100 sm:w-3/4 lg:w-2/4 sm:flex sm:justify-around sm:items-center">
-          <div className="w-48 h-48 bg-white m-auto sm:m-0">img</div>
+          <div
+            className="w-48 h-48 bg-white m-auto sm:m-0"
+            style={{
+              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
+            }}
+          >
+            img
+          </div>
           <div className="sm:w-1 sm:h-48 bg-white sm:ml-5"></div>
           <div className="mt-3">
             <h1 className="ml-3 font-bold">Information Produit</h1>

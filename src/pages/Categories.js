@@ -7,11 +7,10 @@ import ProductCard from "../components/Product/ProductCard";
 export default function Categories() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const productsCateg = useSelector(state => state.categoriesReducer);
-
+  const productsCateg = useSelector(state => state.productsReducer);
   useEffect(() => {
     dispatch(getProductByCategoryId(location.state));
-  }, [dispatch]);
+  }, [dispatch, location]);
 
   return (
     <div className="sm:flex sm:flex-wrap">

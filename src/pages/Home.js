@@ -4,22 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CategoryCard from "../components/Category/CategoryCard";
 import ProductCard from "../components/Product/ProductCard";
+import { getAllProducts } from "../api/Product";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categoriesReducer);
-
-  let products = [
-    { _id: 1, libelle: "seller1", price: 8.0 },
-    { _id: 2, libelle: "seller2", price: 8.0 },
-    { _id: 3, libelle: "seller3", price: 8.0 },
-    { _id: 4, libelle: "seller4", price: 8.0 },
-    { _id: 5, libelle: "seller5", price: 8.0 },
-    { _id: 6, libelle: "seller6", price: 8.0 },
-  ];
+  const categories = useSelector(state => state.categoriesReducer);
+  const products = useSelector(state => state.productsReducer);
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getAllProducts());
   }, [dispatch]);
 
   return (
