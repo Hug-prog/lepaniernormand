@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Cart from "../pages/Cart";
 import Categories from "../pages/Categories";
 import Home from "../pages/Home";
 import Product from "../pages/Product";
@@ -16,6 +17,7 @@ export default function Router() {
       <Route path="/product">
         <Route index element={<Product />} />
       </Route>
+      <Route path="cart" element={<Cart />} />
     </Routes>
   );
 }
