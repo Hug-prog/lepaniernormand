@@ -7,15 +7,15 @@ import ProductCard from "../components/Product/ProductCard";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categoriesReducer);
+  const categories = useSelector((state) => state.categoriesReducer);
 
   let products = [
-    { libelle: "seller1", price: "8.00" },
-    { libelle: "seller2", price: "8.00" },
-    { libelle: "seller3", price: "8.00" },
-    { libelle: "seller4", price: "8.00" },
-    { libelle: "seller5", price: "8.00" },
-    { libelle: "seller6", price: "8.00" },
+    { _id: 1, libelle: "seller1", price: 8.0 },
+    { _id: 2, libelle: "seller2", price: 8.0 },
+    { _id: 3, libelle: "seller3", price: 8.0 },
+    { _id: 4, libelle: "seller4", price: 8.0 },
+    { _id: 5, libelle: "seller5", price: 8.0 },
+    { _id: 6, libelle: "seller6", price: 8.0 },
   ];
 
   useEffect(() => {
