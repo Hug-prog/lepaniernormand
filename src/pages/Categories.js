@@ -14,7 +14,7 @@ export default function Categories() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="sm:flex sm:flex-wrap">
       {productsCateg
         ? productsCateg.map((product, i) => (
             <ProductCard product={product} key={i} />
