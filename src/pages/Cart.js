@@ -14,27 +14,34 @@ export default function Cart() {
     <div>
       <p>Mon Panier</p>
       <table>
-        <tr>
-          <th>Produit</th>
-          <th>Quantite</th>
-          <th>Prix</th>
-          <th>Actions</th>
-        </tr>
-        {cartProducts.map((product, i) => (
-          <tr key={i}>
-            <td>{product.libelle}</td>
-            <td></td>
-            <td>{product.price}</td>
-            <td className="flex">
-              <AiOutlineHeart />
-              <MdOutlineRemoveShoppingCart
-                onClick={() =>
-                  dispatch({ type: DELETE_PRODUCT_CART, payload: product._id })
-                }
-              />
-            </td>
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Quantite</th>
+            <th>Prix</th>
+            <th>Actions</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {cartProducts.map((product, i) => (
+            <tr key={i}>
+              <td>{product.libelle}</td>
+              <td></td>
+              <td>{product.price}</td>
+              <td className="flex">
+                <AiOutlineHeart />
+                <MdOutlineRemoveShoppingCart
+                  onClick={() =>
+                    dispatch({
+                      type: DELETE_PRODUCT_CART,
+                      payload: product._id,
+                    })
+                  }
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
