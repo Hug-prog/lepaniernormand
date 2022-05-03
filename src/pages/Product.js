@@ -26,10 +26,11 @@ export default function Product() {
             className="w-48 h-48 bg-white m-auto sm:m-0"
             style={{
               backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
-          >
-            img
-          </div>
+          ></div>
           <div className="sm:w-1 sm:h-48 bg-white sm:ml-5"></div>
           <div className="mt-3">
             <h1 className="ml-3 font-bold">Information Produit</h1>

@@ -17,6 +17,9 @@ export default function ProductCard({ product }) {
           className=" w-2/3 h-28 m-auto "
           style={{
             backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
           }}
         ></div>
         <p className="mt-4 ml-3">{product.libelle}</p>

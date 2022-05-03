@@ -1,5 +1,6 @@
+import axios from "axios";
 import { API } from ".";
-import { GET_CATEGORIES } from "../constants/categories";
+import { ADD_CATEGORY, GET_CATEGORIES } from "../constants/categories";
 import { GET_PRODUCTSBYCATEGORIESID } from "../constants/products";
 
 export const getCategories = () => {
@@ -20,10 +21,16 @@ export const getProductByCategoryId = id => {
   };
 };
 
-/*export const getCategoryById = (id) => {
-  API.get("/api/categories" + id)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};*/
-
-//export const addCategory = (category,role) =>{}
+export const addCategory = category => {
+  return dispatch => {
+    axios(process.env.REACT_APP_API_URL + "categories", {
+      method: "post",
+      data: category,
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    })
+      .then(res => dispatch({ type: ADD_CATEGORY, payload: res.data }))
+      .catch(err => console.log(err));
+  };
+};
