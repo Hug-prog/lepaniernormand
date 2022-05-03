@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addCategory } from "../../api/Category";
 
-export default function FormCateg() {
+export default function FormProduct() {
   const [libelle, setLibelle] = useState("");
+  const [price, setPrice] = useState("");
+  const [stock, setStock] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const dispatch = useDispatch();
 
   const handleImg = e => {
     if (e.target.files && e.target.files[0]) {
@@ -15,19 +15,46 @@ export default function FormCateg() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const category = { libelle: libelle, image: image };
-    dispatch(addCategory(category));
+    const product = {
+      libelle: libelle,
+      price: price,
+      stock: stock,
+      description: description,
+      image: image,
+    };
   };
 
   return (
     <div>
       <form onSubmit={e => handleSubmit(e)}>
-        <label>nom categorie</label>
+        <label>name</label>
         <input
           onChange={e => {
             setLibelle(e.target.value);
           }}
         />
+
+        <label>price</label>
+        <input
+          onChange={e => {
+            setPrice(e.target.value);
+          }}
+        />
+
+        <label>stock</label>
+        <input
+          onChange={e => {
+            setStock(e.target.value);
+          }}
+        />
+
+        <label>description</label>
+        <input
+          onChange={e => {
+            setDescription(e.target.value);
+          }}
+        />
+
         <label>image</label>
         <input
           type={"file"}
