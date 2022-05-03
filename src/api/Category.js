@@ -23,11 +23,12 @@ export const getProductByCategoryId = id => {
 
 export const addCategory = category => {
   return dispatch => {
-    axios(process.env.REACT_APP_API_URL + "categories", {
+    axios(process.env.REACT_APP_API_URL + "api/categories", {
       method: "post",
       data: category,
       headers: {
         "Content-type": "multipart/form-data",
+        Accept: "*/*",
       },
     })
       .then(res => dispatch({ type: ADD_CATEGORY, payload: res.data }))
