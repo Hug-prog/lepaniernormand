@@ -1,67 +1,104 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../api/Product";
 
 export default function FormProduct() {
-  const [libelle, setLibelle] = useState("");
-  const [price, setPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-
-  const handleImg = e => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(URL.createObjectURL(e.target.files[0]));
-    }
+  const dispatch = useDispatch();
+  const formData = new FormData();
+  const initForm = {
+    libelle: "",
+    price: "",
+    stock: "",
+    description: "",
+    images: [],
+    categoriesId: [],
+    sellerId: "",
   };
 
-  const handleSubmit = e => {
+  const [product, setProduct] = useState(initForm);
+
+  const handleChange = (e) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+  };
+
+  const handleFiles = (e) => {
+    setProduct({ ...product, images: e.target.files });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const product = {
-      libelle: libelle,
-      price: price,
-      stock: stock,
-      description: description,
-      image: image,
-    };
+    for (const [key, value] of Object.entries(product)) {
+      if (key === "images") {
+        for (const image of value) {
+          formData.append(key, image, image.name);
+        }
+      }
+      if (key === "categoriesId") {
+        for (const categorie of value) {
+          formData.append(key, categorie);
+        }
+      } else {
+        formData.append(key, value);
+      }
+    }
+    dispatch(addProduct(formData));
   };
 
   return (
     <div>
-      <form onSubmit={e => handleSubmit(e)}>
-        <label>name</label>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <label>libelle</label>
         <input
-          onChange={e => {
-            setLibelle(e.target.value);
-          }}
+          type={"text"}
+          name={"libelle"}
+          value={product.libelle}
+          onChange={(e) => handleChange(e)}
         />
 
-        <label>price</label>
+        <label>prix</label>
         <input
-          onChange={e => {
-            setPrice(e.target.value);
-          }}
+          type={"text"}
+          name={"price"}
+          value={product.price}
+          onChange={(e) => handleChange(e)}
         />
 
         <label>stock</label>
         <input
-          onChange={e => {
-            setStock(e.target.value);
-          }}
+          type={"text"}
+          name={"stock"}
+          value={product.stock}
+          onChange={(e) => handleChange(e)}
         />
 
         <label>description</label>
         <input
-          onChange={e => {
-            setDescription(e.target.value);
-          }}
+          type={"text"}
+          name={"description"}
+          value={product.description}
+          onChange={(e) => handleChange(e)}
         />
-
-        <label>image</label>
+        <label>sellerId</label>
+        <input
+          type={"text"}
+          name={"sellerId"}
+          value={product.sellerId}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>categorieId</label>
+        <input
+          type={"text"}
+          name={"categorieId"}
+          value={product.categorieId}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>images</label>
         <input
           type={"file"}
-          onChange={e => handleImg(e)}
-          accept=".jpg,.jpeg,.png"
+          name="images"
+          onInput={(e) => handleFiles(e)}
+          multiple
         />
-        <div>{image ? <img src={image}></img> : ""}</div>
         <button type="submit">ajouter</button>
       </form>
     </div>
