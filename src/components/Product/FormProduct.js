@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../api/Category";
 import { addProduct } from "../../api/Product";
-import { getSellers } from "../../api/Sellers";
+import { getSellers } from "../../api/Seller";
 
 export default function FormProduct() {
   const dispatch = useDispatch();
@@ -19,8 +19,6 @@ export default function FormProduct() {
   const categories = useSelector(state => state.categoriesReducer);
   const sellers = useSelector(state => state.sellersReducer);
 
-  console.log(sellers);
-
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSellers());
@@ -36,17 +34,24 @@ export default function FormProduct() {
     setProduct({ ...product, images: e.target.files });
   };
 
+  const handleChangeCategories = e => {
+    setProduct({
+      ...product,
+      ...product.categoriesId.push(e.target.value),
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     for (const [key, value] of Object.entries(product)) {
       if (key === "images") {
         for (const image of value) {
-          formData.append(key, image, image.name);
+          formData.append(key + "[]", image, image.name);
         }
       }
       if (key === "categoriesId") {
         for (const categorie of value) {
-          formData.append(key, categorie);
+          formData.append(key + "[]", categorie);
         }
       } else {
         formData.append(key, value);
@@ -93,15 +98,11 @@ export default function FormProduct() {
           onChange={e => handleChange(e)}
         />
         <label className="block">seller</label>
-        <select>
+        <select name="sellerId" onChange={e => handleChange(e)}>
           <option value="">seller</option>
           {sellers
             ? sellers.map((seller, i) => (
-                <option
-                  key={i}
-                  value={seller.id}
-                  onChange={e => handleChange(e)}
-                >
+                <option key={i} value={seller.id}>
                   {seller.libelle}
                 </option>
               ))
@@ -109,15 +110,11 @@ export default function FormProduct() {
         </select>
 
         <label className="block">categories</label>
-        <select>
+        <select name="categoriesId" onChange={e => handleChangeCategories(e)}>
           <option value="">categorie</option>
           {categories
             ? categories.map((category, i) => (
-                <option
-                  key={i}
-                  value={category.id}
-                  onChange={e => handleChange(e)}
-                >
+                <option key={i} value={category.id}>
                   {category.libelle}
                 </option>
               ))

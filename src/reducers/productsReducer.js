@@ -1,4 +1,5 @@
 import {
+  ADD_PRODUCT,
   GET_PRODUCTS,
   GET_PRODUCTSBYCATEGORIESID,
 } from "../constants/products";
@@ -9,6 +10,9 @@ export default function productsReducer(products = [], action) {
       return products;
     case GET_PRODUCTSBYCATEGORIESID:
       products = action.payload;
+    case ADD_PRODUCT:
+      products = [...products, action.payload];
+      return products;
     default:
       return products;
   }

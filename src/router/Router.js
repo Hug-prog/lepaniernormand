@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AddCategory from "../pages/AddCategory";
 import AddProduct from "../pages/AddProduct";
-import AddSeller from "../pages/AddSeller";
+
 import Cart from "../pages/Cart";
 import Categories from "../pages/Categories";
 import Home from "../pages/Home";
@@ -19,7 +19,6 @@ export default function Router() {
       <Route path="cart" element={<Cart />} />
       <Route path="/categories/add" element={<AddCategory />} />
       <Route path="/products/add" element={<AddProduct />} />
-      <Route path="/sellers/add" element={<AddSeller />} />
       <Route path="/register" element={<Register />} />
     </Routes>
   );
