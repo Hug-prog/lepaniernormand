@@ -4,7 +4,7 @@ import Router from "./router/Router";
 
 function App() {
   return (
-    <div className="m-auto">
+    <div className="m-auto bg-four">
       <Navbar />
       <div className=" w-full" style={{ minHeight: "80vh" }}>
         <Router />
