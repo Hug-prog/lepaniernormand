@@ -17,7 +17,6 @@ export default function cartReducer(
     case DELETE_PRODUCT_CART:
       cart = cart.filter((product) => product._id !== action.payload);
       localStorage.setItem("cart", JSON.stringify(cart));
-      console.log(action.payload);
       return cart;
     default:
       return cart;
