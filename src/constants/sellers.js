@@ -1,0 +1,2 @@
+export const GET_SELLERBYID = "GET_SELLERBYID";
+export const GET_SELLERS = "GET_SELLERS";
