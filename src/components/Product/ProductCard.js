@@ -27,7 +27,12 @@ export default function ProductCard({ product }) {
       </Link>
 
       <button
-        onClick={() => dispatch({ type: ADD_PRODUCT_CART, payload: product })}
+        onClick={() =>
+          dispatch({
+            type: ADD_PRODUCT_CART,
+            payload: { product, quantity: 1 },
+          })
+        }
         className="mt-2 ml-3 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2"
       >
         Ajouter au Pannier

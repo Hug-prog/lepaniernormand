@@ -23,18 +23,28 @@ export default function Cart() {
           </tr>
         </thead>
         <tbody>
-          {cartProducts.map((product, i) => (
+          {cartProducts.map((cartProduct, i) => (
             <tr key={i}>
-              <td>{product.libelle}</td>
-              <td></td>
-              <td>{product.price}</td>
+              <td>
+                <div className="flex">
+                  <div
+                    className=" h-16 w-16 bg-center bg-cover"
+                    style={{
+                      backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${cartProduct.product.images[0]})`,
+                    }}
+                  ></div>
+                  {cartProduct.product.libelle}
+                </div>
+              </td>
+              <td>{cartProduct.quantity}</td>
+              <td>{cartProduct.product.price}</td>
               <td className="flex">
                 <AiOutlineHeart />
                 <MdOutlineRemoveShoppingCart
                   onClick={() =>
                     dispatch({
                       type: DELETE_PRODUCT_CART,
-                      payload: product._id,
+                      payload: cartProduct.product.id,
                     })
                   }
                 />

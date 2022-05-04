@@ -9,13 +9,24 @@ export default function cartReducer(
 ) {
   switch (action.type) {
     case ADD_PRODUCT_CART:
+      /*let obejctCart = cart.find(
+        (cartItem) => cartItem.product.id === action.payload.product.id
+      );
+
+      if (obejctCart !== undefined) {
+        let index = cart.indexOf(obejctCart);
+
+        //cart = [...newCart, (newCart[index].quantity = 5)];
+      } else {
+        cart = [...cart, action.payload];
+      }*/
       cart = [...cart, action.payload];
       localStorage.setItem("cart", JSON.stringify(cart));
       return cart;
     case GET_PRODUCT_CART:
       return cart;
     case DELETE_PRODUCT_CART:
-      cart = cart.filter((product) => product._id !== action.payload);
+      cart = cart.filter((cartItem) => cartItem.product.id !== action.payload);
       localStorage.setItem("cart", JSON.stringify(cart));
       return cart;
     default:
