@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addSeller } from "../../api/Seller";
 
 export default function FormSeller() {
   const dispatch = useDispatch();
@@ -35,5 +36,49 @@ export default function FormSeller() {
     }
     dispatch(addSeller(formData));
   };
-  return <div></div>;
+  return (
+    <div>
+      <p>Ajouter un vendeur</p>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <input
+          type={"text"}
+          name={"libelle"}
+          placeholder="nom vendeur"
+          value={seller.libelle}
+          onChange={(e) => handleChange(e)}
+        />
+        <input
+          type="text"
+          name="houseNumber"
+          placeholder="numero"
+          value={seller.houseNumber}
+          onChange={(e) => handleChange(e)}
+        />
+        <input
+          type="text"
+          name="street"
+          placeholder="nom de rue"
+          value={seller.street}
+          onChange={(e) => handleChange(e)}
+        />
+        <input
+          type="text"
+          name="postCode"
+          placeholder="code postal"
+          value={seller.postCode}
+          onChange={(e) => handleChange(e)}
+        />
+        <input
+          type="text"
+          name="city"
+          placeholder="ville"
+          value={seller.city}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>image</label>
+        <input type={"file"} name={"image"} onChange={(e) => handleFiles(e)} />
+        <button type="submit">ajouter</button>
+      </form>
+    </div>
+  );
 }

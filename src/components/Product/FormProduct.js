@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../api/Category";
 import { addProduct } from "../../api/Product";
-import { getSellers } from "../../api/Sellers";
+import { getSellers } from "../../api/Seller";
 
 export default function FormProduct() {
   const dispatch = useDispatch();
@@ -16,10 +16,8 @@ export default function FormProduct() {
     categoriesId: [],
     sellerId: "",
   };
-  const categories = useSelector(state => state.categoriesReducer);
-  const sellers = useSelector(state => state.sellersReducer);
-
-  console.log(sellers);
+  const categories = useSelector((state) => state.categoriesReducer);
+  const sellers = useSelector((state) => state.sellersReducer);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -28,15 +26,15 @@ export default function FormProduct() {
 
   const [product, setProduct] = useState(initForm);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  const handleFiles = e => {
+  const handleFiles = (e) => {
     setProduct({ ...product, images: e.target.files });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     for (const [key, value] of Object.entries(product)) {
       if (key === "images") {
@@ -57,13 +55,13 @@ export default function FormProduct() {
 
   return (
     <div>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>libelle</label>
         <input
           type={"text"}
           name={"libelle"}
           value={product.libelle}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           className="block"
         />
 
@@ -72,7 +70,7 @@ export default function FormProduct() {
           type={"text"}
           name={"price"}
           value={product.price}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           className="block"
         />
 
@@ -81,7 +79,7 @@ export default function FormProduct() {
           type={"text"}
           name={"stock"}
           value={product.stock}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           className="block"
         />
 
@@ -90,7 +88,7 @@ export default function FormProduct() {
           type={"text"}
           name={"description"}
           value={product.description}
-          onChange={e => handleChange(e)}
+          onChange={(e) => handleChange(e)}
         />
         <label className="block">seller</label>
         <select>
@@ -100,7 +98,7 @@ export default function FormProduct() {
                 <option
                   key={i}
                   value={seller.id}
-                  onChange={e => handleChange(e)}
+                  onChange={(e) => handleChange(e)}
                 >
                   {seller.libelle}
                 </option>
@@ -116,7 +114,7 @@ export default function FormProduct() {
                 <option
                   key={i}
                   value={category.id}
-                  onChange={e => handleChange(e)}
+                  onChange={(e) => handleChange(e)}
                 >
                   {category.libelle}
                 </option>
@@ -128,7 +126,7 @@ export default function FormProduct() {
         <input
           type={"file"}
           name="images"
-          onInput={e => handleFiles(e)}
+          onInput={(e) => handleFiles(e)}
           multiple
         />
         <button type="submit">ajouter</button>
