@@ -9,18 +9,23 @@ export default function cartReducer(
 ) {
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      /*let obejctCart = cart.find(
+      let obejctCart = cart.find(
         (cartItem) => cartItem.product.id === action.payload.product.id
       );
 
       if (obejctCart !== undefined) {
         let index = cart.indexOf(obejctCart);
-
-        //cart = [...newCart, (newCart[index].quantity = 5)];
+        return cart.map((cartItem, i) => {
+          if (i === index) {
+            return {
+              product: action.payload.product,
+              quantity: cartItem.quantity + action.payload.quantity,
+            };
+          } else return cartItem;
+        });
       } else {
         cart = [...cart, action.payload];
-      }*/
-      cart = [...cart, action.payload];
+      }
       localStorage.setItem("cart", JSON.stringify(cart));
       return cart;
     case GET_PRODUCT_CART:

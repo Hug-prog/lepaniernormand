@@ -9,7 +9,7 @@ export default function productsReducer(products = [], action) {
       products = action.payload;
       return products;
     case GET_PRODUCTSBYCATEGORIESID:
-      products = action.payload;
+      return (products = action.payload);
     case ADD_PRODUCT:
       products = [...products, action.payload];
       return products;

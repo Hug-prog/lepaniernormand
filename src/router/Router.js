@@ -1,7 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import FormSeller from "../components/Seller/FormSeller";
 import AddCategory from "../pages/AddCategory";
 import AddProduct from "../pages/AddProduct";
+import Seller from "../pages/admin/Seller";
 
 import Cart from "../pages/Cart";
 import Categories from "../pages/Categories";
@@ -19,7 +21,9 @@ export default function Router() {
       <Route path="cart" element={<Cart />} />
       <Route path="/categories/add" element={<AddCategory />} />
       <Route path="/products/add" element={<AddProduct />} />
+      <Route path="/seller/add" element={<FormSeller />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/admin/sellers" element={<Seller />} />
     </Routes>
   );
 }
