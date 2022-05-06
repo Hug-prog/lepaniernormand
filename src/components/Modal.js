@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { ClOSEMODAL, LOGIN } from "../constants/modal";
 import FormLogin from "../components/auth/FormLogin";
+import { getCurrentUser } from "../api/Auth";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export default function Modal(props) {
     >
       <button onClick={() => dispatch({ type: ClOSEMODAL })}>X</button>
       {displayComponent(props.component)}
+      <button onClick={() => getCurrentUser()}>try</button>
     </div>
   );
 }
