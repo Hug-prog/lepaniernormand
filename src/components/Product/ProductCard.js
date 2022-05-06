@@ -7,7 +7,7 @@ import { ADD_PRODUCT_CART } from "../../constants/cart";
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
   return (
-    <div className="w-48 h-auto bg-slate-100 mt-4 m-auto pb-2">
+    <div className="w-48 h-auto bg-third rounded shadow-md shadow-third mt-4 m-auto pb-2">
       <Link to={"/"} className="flex justify-end">
         <AiOutlineHeart />
       </Link>

@@ -21,7 +21,7 @@ export default function Home() {
       <ul className="flex flex-wrap justify-center items-center">
         {categories.map((category, i) => (
           <li className="mr-5" key={i}>
-            <Link to={"/categories"} state={category.id}>
+            <Link to={"/categories"} state={category.id} className="font-bold">
               {category.libelle}
             </Link>
           </li>
