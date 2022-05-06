@@ -16,6 +16,3 @@ export const login = (user) => {
     .then((res) => res)
     .catch((err) => console.log(err));
 };
-export const getCurrentUser = () => {
-  API.get("/api/token/refresh").then((res) => console.log(res));
-};

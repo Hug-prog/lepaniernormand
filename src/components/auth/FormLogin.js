@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { login } from "../../api/Auth";
+import { ClOSEMODAL } from "../../constants/modal";
 
 export default function FormLogin() {
-  const formData = new FormData();
+  const dispatch = useDispatch();
   const initForm = {
     username: "",
     password: "",
@@ -16,24 +19,36 @@ export default function FormLogin() {
     login(user);
   };
   return (
-    <div>
+    <div style={{ minHeight: "300px" }}>
       <p>Se connecter</p>
-      <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="h-72 flex flex-col items-center justify-around"
+      >
         <input
+          className="w-3/4 p-3"
           type={"email"}
           name="username"
           value={user.username}
           placeholder="Adresse e-mail"
           onChange={(e) => handleChange(e)}
+          required
         />
         <input
+          className=" w-3/4 p-3"
           type="password"
           name="password"
           placeholder="mot de passe"
           value={user.password}
           onChange={(e) => handleChange(e)}
+          required
         />
-        <button>Se connecter</button>
+        <Link to={"/register"} onClick={() => dispatch({ type: ClOSEMODAL })}>
+          Pas encore de compte?
+        </Link>
+        <button className="bg-main text-white rounded-lg p-4 w-4/5">
+          Se connecter
+        </button>
       </form>
     </div>
   );
