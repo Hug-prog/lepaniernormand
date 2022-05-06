@@ -11,43 +11,43 @@ export default function Cart() {
     dispatch({ type: GET_PRODUCT_CART });
   }, [dispatch]);
   return (
-    <div className="w-full h-auto">
+    <div className="w-screen h-auto">
       <p className="m-6 font-bold">Mon Panier</p>
-      <div className="sm:flex sm:justify-center sm:items-center m-auto">
-        <table className="m-10 bg-third rounded shadow-md shadow-third">
+      <div className="sm:flex sm:justify-around sm:items-center">
+        <table className="m-auto bg-third rounded shadow-md shadow-third text-center ">
           <thead className=" border-b-2">
             <tr>
-              <th className="p-6">Produit</th>
-              <th className="p-6">Quantite</th>
-              <th className="p-6">Prix</th>
-              <th className="p-6">Actions</th>
+              <th className="p-2 lg:p-10">Produit</th>
+              <th className="p-2 lg:p-10">Quantite</th>
+              <th className="p-2 lg:p-10">Prix</th>
+              <th className="p-2 lg:p-10">Actions</th>
             </tr>
           </thead>
           <tbody>
             {cartProducts.map((cartProduct, i) => (
               <tr key={i}>
                 <td>
-                  <div className="mt-3 p-6 flex justify-center items-center">
+                  <div className="mt-3 sm:p-6 sm:flex sm:justify-center sm:items-center">
                     <div
                       className=" h-16 w-16 bg-center bg-cover border-main border-2"
                       style={{
                         backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${cartProduct.product.images[0]})`,
                       }}
                     ></div>
-                    <p className="ml-6"> {cartProduct.product.libelle}</p>
+                    <p className="sm:ml-6"> {cartProduct.product.libelle}</p>
                   </div>
                 </td>
-                <td className=" border-x-2">
-                  <div className="p-6"> {cartProduct.quantity}</div>
+                <td className="border-x-2">
+                  <div> {cartProduct.quantity}</div>
                 </td>
 
                 <td className="border-x-2">
-                  <div className="p-6">{cartProduct.product.price}€ </div>
+                  <div>{cartProduct.product.price}€ </div>
                 </td>
 
                 <td>
-                  <div className="flex p-6">
-                    <AiOutlineHeart className="mr-3" />
+                  <div className="flex sm:p-6">
+                    <AiOutlineHeart className="ml-3 lg:ml-5 mr-3" />
                     <MdOutlineRemoveShoppingCart
                       onClick={() =>
                         dispatch({
@@ -62,19 +62,19 @@ export default function Cart() {
             ))}
           </tbody>
         </table>
-        <div className="w-56 h-44 bg-third text-center rounded">
-          <h1 className="font-bold m-4">Commande</h1>
-          <div className="m-4">
+        <div className="w-56 h-72 m-auto mt-6 bg-third text-center rounded shadow-md shadow-third">
+          <h1 className="font-bold relative top-3 ">Commande</h1>
+          <div className="m-4 mt-10">
             <input className="rounded-l-lg w-32 p-1" />
             <button className="rounded-r-lg bg-main p-1">Apply</button>
           </div>
 
-          <div className="flex justify-around items-center">
+          <div className="flex justify-around items-center mt-6">
             <p className="font-bold">Totale</p>
             <p>price</p>
           </div>
 
-          <button className="mt-2 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2">
+          <button className="mt-10 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2">
             Payer
           </button>
         </div>
