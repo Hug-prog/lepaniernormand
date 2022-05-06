@@ -1,12 +1,23 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { ADD_PRODUCT_CART } from "../constants/cart";
 
 export default function Product() {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const products = useSelector(state => state.productsReducer);
-  const product = products.find(product => product.id === location.state);
+  const products = useSelector((state) => state.productsReducer);
+  const product = products.find((product) => product.id === location.state);
   const [image, setImage] = useState("0");
+  const [quantity, setQuantity] = useState(1);
+  const handleChange = (e) => {
+    console.log(quantity);
+    setQuantity(e.target.value);
+  };
+  const quantityChoice = [];
+  for (let i = 1; i < product.stock + 1; i++) {
+    quantityChoice.push(i);
+  }
 
   return (
     <div className="w-sreen h-screen flex justify-center items-center ">
@@ -73,7 +84,23 @@ export default function Product() {
             </p>
 
             <div className="w-full h-16 flex justify-center items-center">
-              <button className="mt-2 m-auto bg-main text-white rounded pl-4 sm:pl-2 pr-4 sm:pr-2 pt-2 pb-2 lg:text-xl">
+              <select name="quantity" onChange={(e) => handleChange(e)}>
+                {quantityChoice.map((choice, i) => (
+                  <option value={choice} key={i}>
+                    {choice}
+                  </option>
+                ))}
+              </select>
+
+              <button
+                className="mt-2 m-auto bg-main text-white rounded pl-4 sm:pl-2 pr-4 sm:pr-2 pt-2 pb-2 lg:text-xl"
+                onClick={() =>
+                  dispatch({
+                    type: ADD_PRODUCT_CART,
+                    payload: { product, quantity: parseInt(quantity) },
+                  })
+                }
+              >
                 Ajouter au panier
               </button>
             </div>
