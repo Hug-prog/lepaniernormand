@@ -6,11 +6,12 @@ import { ADD_PRODUCT_CART } from "../constants/cart";
 export default function Product() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const products = useSelector((state) => state.productsReducer);
-  const product = products.find((product) => product.id === location.state);
-  const [image, setImage] = useState("0");
+  const products = useSelector(state => state.productsReducer);
+  const product = products.find(product => product.id === location.state);
   const [quantity, setQuantity] = useState(1);
-  const handleChange = (e) => {
+  const [image, setImage] = useState(product.images[0]);
+
+  const handleChange = e => {
     console.log(quantity);
     setQuantity(e.target.value);
   };
@@ -20,51 +21,26 @@ export default function Product() {
   }
 
   return (
-    <div className="w-sreen h-screen flex justify-center items-center ">
-      <div className=" w-11/12 h-auto m-auto sm:flex sm:justify-center sm:items-center ">
+    <div className="w-sreen h-screen">
+      <div className=" w-11/12 h-auto m-auto mt-10 sm:flex sm:justify-center sm:items-center ">
         <div className=" w-2/3 m-auto flex justify-center items-center sm:block h-auto sm:w-48">
-          <div
-            className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4"
-            style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-            onClick={() => setImage("0")}
-          ></div>
-
-          <div
-            className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20  sm:m-auto sm:mt-4"
-            style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[1]})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-            onClick={() => setImage("1")}
-          ></div>
-
-          <div
-            className="bg-third rounded shadow-md shadow-third w-14 h-14 lg:w-20 lg:h-20  sm:m-auto sm:mt-4"
-            style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[2]})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-            onClick={() => setImage("2")}
-          ></div>
+          {product.images.map((image, i) => (
+            <div
+              key={i}
+              className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
+              }}
+              onClick={() => setImage(image)}
+            ></div>
+          ))}
         </div>
 
         <div className="w-2/3 mt-6 p-2 m-auto h-auto  bg-third rounded shadow-md shadow-third sm:w-3/4 lg:w-2/4 sm:flex sm:justify-around sm:items-center">
           <div
-            className="w-48 h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0"
+            className="w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[image]})`,
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
+              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image})`,
             }}
           ></div>
 
@@ -79,14 +55,10 @@ export default function Product() {
 
             <p className="ml-6 lg:text-xl">stockage {product.stock}</p>
 
-            <p className="ml-6 w-4/5 h-auto lg:text-xl">
-              {product.description}
-            </p>
-
-            <div className="w-full h-16 flex justify-around my-8">
+            <div className="w-full h-16 text-center sm:flex sm:justify-around my-8">
               <select
                 name="quantity"
-                onChange={(e) => handleChange(e)}
+                onChange={e => handleChange(e)}
                 className="w-32 text-center rounded"
               >
                 {quantityChoice.map((choice, i) => (
@@ -97,7 +69,7 @@ export default function Product() {
               </select>
 
               <button
-                className=" bg-main text-white rounded sm:px-4 py-2 px-2 lg:text-xl"
+                className=" bg-main text-white rounded mt-5 sm:px-4 py-2 px-2 lg:text-xl"
                 onClick={() =>
                   dispatch({
                     type: ADD_PRODUCT_CART,
@@ -118,6 +90,10 @@ export default function Product() {
           <p>okok</p>
           <p>okok</p>
         </div>
+      </div>
+      <div className=" w-4/6 h-auto ml-6">
+        <h1 className="font-bold">description</h1>
+        <p className="ml-6 w-4/5 h-auto lg:text-xl">{product.description}</p>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ export default function Home() {
 
       <div className="mt-5 w-5/6 h-auto m-auto">
         <h1 className="text-center font-bold">Catégories</h1>
-        <div className=" sm:flex sm:flex-wrap">
+        <div className=" flex flex-wrap">
           {categories
             ? categories.map((category, i) => (
                 <CategoryCard category={category} key={i} />
