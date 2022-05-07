@@ -83,8 +83,12 @@ export default function Product() {
               {product.description}
             </p>
 
-            <div className="w-full h-16 flex justify-center items-center">
-              <select name="quantity" onChange={(e) => handleChange(e)}>
+            <div className="w-full h-16 flex justify-around my-8">
+              <select
+                name="quantity"
+                onChange={(e) => handleChange(e)}
+                className="w-32 text-center rounded"
+              >
                 {quantityChoice.map((choice, i) => (
                   <option value={choice} key={i}>
                     {choice}
@@ -93,7 +97,7 @@ export default function Product() {
               </select>
 
               <button
-                className="mt-2 m-auto bg-main text-white rounded pl-4 sm:pl-2 pr-4 sm:pr-2 pt-2 pb-2 lg:text-xl"
+                className=" bg-main text-white rounded sm:px-4 py-2 px-2 lg:text-xl"
                 onClick={() =>
                   dispatch({
                     type: ADD_PRODUCT_CART,

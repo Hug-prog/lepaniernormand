@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { login } from "../../api/Auth";
-import { ClOSEMODAL } from "../../constants/modal";
+import { REGISTER } from "../../constants/modal";
 
 export default function FormLogin() {
   const dispatch = useDispatch();
@@ -43,9 +42,9 @@ export default function FormLogin() {
           onChange={(e) => handleChange(e)}
           required
         />
-        <Link to={"/register"} onClick={() => dispatch({ type: ClOSEMODAL })}>
+        <p onClick={() => dispatch({ type: REGISTER })}>
           Pas encore de compte?
-        </Link>
+        </p>
         <button className="bg-main text-white rounded-lg p-4 w-4/5">
           Se connecter
         </button>

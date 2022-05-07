@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ClOSEMODAL, LOGIN } from "../constants/modal";
+import { ClOSEMODAL, LOGIN, REGISTER } from "../constants/modal";
 import FormLogin from "../components/auth/FormLogin";
+import FormRegister from "./auth/FormRegister";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
@@ -15,10 +16,9 @@ export default function Modal(props) {
   const displayComponent = (component) => {
     switch (component) {
       case LOGIN:
-        console.log(component);
         return <FormLogin />;
-      default:
-        return <FormLogin />;
+      case REGISTER:
+        return <FormRegister />;
     }
   };
   return (
@@ -28,7 +28,7 @@ export default function Modal(props) {
       )}`}
     >
       <button onClick={() => dispatch({ type: ClOSEMODAL })}>X</button>
-      {displayComponent(props.component)}
+      {displayComponent(props.state.component)}
     </div>
   );
 }
