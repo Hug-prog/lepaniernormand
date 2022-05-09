@@ -21,39 +21,42 @@ export default function Product() {
     setQuantity(e.target.value);
   };
   const quantityChoice = [];
-  for (let i = 1; i < product.stock + 1; i++) {
-    quantityChoice.push(i);
+  if (product !== undefined) {
+    for (let i = 1; i < product.stock + 1; i++) {
+      quantityChoice.push(i);
+    }
   }
 
+  if (product === undefined) {
+    return (
+      <>
+        <p>Loading ...</p>
+      </>
+    );
+  }
   return (
     <div className="w-sreen h-screen">
       <div className=" w-11/12 h-auto m-auto mt-10 sm:flex sm:justify-center sm:items-center ">
         <div className=" w-2/3 m-auto flex justify-center items-center sm:block h-auto sm:w-48">
-          {product.images
-            ? product.images.map((image, i) => (
-                <div
-                  key={i}
-                  className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
-                  }}
-                  onClick={() => setImage(i)}
-                ></div>
-              ))
-            : ""}
+          {product.images.map((image, i) => (
+            <div
+              key={i}
+              className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
+              }}
+              onClick={() => setImage(i)}
+            ></div>
+          ))}
         </div>
 
         <div className="w-2/3 mt-6 p-2 m-auto h-auto bg-third rounded shadow-md shadow-third sm:w-3/4 lg:w-2/4 sm:flex sm:justify-around sm:items-center">
-          {product.images ? (
-            <div
-              className="w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[image]})`,
-              }}
-            ></div>
-          ) : (
-            ""
-          )}
+          <div
+            className="w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[image]})`,
+            }}
+          ></div>
 
           <div className="sm:w-1 sm:h-48 lg:h-60 bg-white sm:ml-5"></div>
 
