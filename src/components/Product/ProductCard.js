@@ -12,7 +12,7 @@ export default function ProductCard({ product }) {
         <AiOutlineHeart />
       </Link>
 
-      <Link to={"/product"} state={product.id}>
+      <Link to={`/product/${product.id}`}>
         <div
           className=" w-2/3 h-28 m-auto "
           style={{

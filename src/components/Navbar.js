@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGIN } from "../constants/modal";
 export default function Navbar() {
-  const dispatch = useDispatch(0);
+  const dispatch = useDispatch();
   return (
     <div className="block text-center sm:flex justify-around items-center bg-main h-auto sm:h-16 pb-2 sm:pb-0 static w-full">
       <h1 className="pt-3 sm:pt-0 sm:mt-0 text-white">LePannierNormand</h1>
@@ -20,7 +20,7 @@ export default function Navbar() {
       </div>
 
       <nav className="mt-3 sm:mt-0 flex justify-center items-center">
-        <Link className="mr-3" to="/">
+        <Link className="mr-3" to="/home" state={{ loaded: false }}>
           <AiOutlineHeart className="fill-white" />
         </Link>
         <div

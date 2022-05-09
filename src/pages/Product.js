@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../api/Product";
 import { ADD_PRODUCT_CART } from "../constants/cart";
 
 export default function Product() {
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const location = useLocation();
-  const products = useSelector(state => state.productsReducer);
-  const product = products.find(product => product.id === location.state);
-  const [quantity, setQuantity] = useState(1);
-  const [image, setImage] = useState(product.images[0]);
+  const product = useSelector((state) => state.productsReducer[0]);
+  useEffect(() => {
+    if (id !== undefined) {
+      dispatch(getProductById(id));
+    }
+  }, [id, dispatch]);
 
-  const handleChange = e => {
-    console.log(quantity);
+  const [quantity, setQuantity] = useState(1);
+  const [image, setImage] = useState(0);
+
+  const handleChange = (e) => {
     setQuantity(e.target.value);
   };
   const quantityChoice = [];
@@ -24,25 +29,31 @@ export default function Product() {
     <div className="w-sreen h-screen">
       <div className=" w-11/12 h-auto m-auto mt-10 sm:flex sm:justify-center sm:items-center ">
         <div className=" w-2/3 m-auto flex justify-center items-center sm:block h-auto sm:w-48">
-          {product.images.map((image, i) => (
-            <div
-              key={i}
-              className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
-              }}
-              onClick={() => setImage(image)}
-            ></div>
-          ))}
+          {product.images
+            ? product.images.map((image, i) => (
+                <div
+                  key={i}
+                  className="bg-third rounded shadow-md shadow-third mr-5 w-14 h-14 lg:w-20 lg:h-20 sm:m-auto  sm:mt-4 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
+                  }}
+                  onClick={() => setImage(i)}
+                ></div>
+              ))
+            : ""}
         </div>
 
-        <div className="w-2/3 mt-6 p-2 m-auto h-auto  bg-third rounded shadow-md shadow-third sm:w-3/4 lg:w-2/4 sm:flex sm:justify-around sm:items-center">
-          <div
-            className="w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image})`,
-            }}
-          ></div>
+        <div className="w-2/3 mt-6 p-2 m-auto h-auto bg-third rounded shadow-md shadow-third sm:w-3/4 lg:w-2/4 sm:flex sm:justify-around sm:items-center">
+          {product.images ? (
+            <div
+              className="w-40 h-40 sm:w-48 sm:h-48 lg:w-72 lg:h-72  bg-white m-auto sm:m-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[image]})`,
+              }}
+            ></div>
+          ) : (
+            ""
+          )}
 
           <div className="sm:w-1 sm:h-48 lg:h-60 bg-white sm:ml-5"></div>
 
@@ -58,7 +69,7 @@ export default function Product() {
             <div className="w-full h-16 text-center sm:flex sm:justify-around my-8">
               <select
                 name="quantity"
-                onChange={e => handleChange(e)}
+                onChange={(e) => handleChange(e)}
                 className="w-32 text-center rounded"
               >
                 {quantityChoice.map((choice, i) => (

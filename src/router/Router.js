@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import FormSeller from "../components/Seller/FormSeller";
 import AddCategory from "../pages/AddCategory";
@@ -12,12 +12,14 @@ import Product from "../pages/Product";
 import Register from "../pages/Register";
 
 export default function Router() {
+  useEffect(() => {});
+
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/home" element={<Home />}></Route>
       <Route path="/categories" element={<Categories />}></Route>
-      <Route path="/product" element={<Product />}></Route>
+      <Route path="/product/:id" element={<Product />}></Route>
       <Route path="cart" element={<Cart />} />
       <Route path="/categories/add" element={<AddCategory />} />
       <Route path="/products/add" element={<AddProduct />} />
