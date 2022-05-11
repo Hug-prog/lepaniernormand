@@ -2,15 +2,32 @@ import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { likeProduct, unLikeProduct } from "../../api/User";
 import { ADD_PRODUCT_CART } from "../../constants/cart";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, user }) {
   const dispatch = useDispatch();
   return (
     <div className="w-48 2xl:w-56 h-auto bg-third rounded shadow-md shadow-third mt-4 m-auto pb-2">
-      <Link to={"/"} className="flex justify-end">
-        <AiOutlineHeart className=" 2xl:text-2xl" />
-      </Link>
+      <div className="flex justify-end">
+        {user.likedProducts !== undefined ? (
+          <>
+            {user.likedProducts.indexOf(product.id) < 0 ? (
+              <AiOutlineHeart
+                className=" 2xl:text-2xl"
+                onClick={() => dispatch(likeProduct(product.id))}
+              />
+            ) : (
+              <AiOutlineHeart
+                className=" 2xl:text-2xl"
+                onClick={() => dispatch(unLikeProduct(product.id))}
+              />
+            )}
+          </>
+        ) : (
+          <AiOutlineHeart className=" 2xl:text-2xl" />
+        )}
+      </div>
 
       <Link to={`/product/${product.id}`}>
         <div

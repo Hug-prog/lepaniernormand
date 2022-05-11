@@ -1,5 +1,6 @@
 import {
   ADD_PRODUCT,
+  DELETE_PRODUCT,
   GET_PRODUCTS,
   GET_PRODUCTSBYCATEGORIESID,
 } from "../constants/products";
@@ -13,6 +14,8 @@ export default function productsReducer(products = [], action) {
     case ADD_PRODUCT:
       products = [...products, action.payload];
       return products;
+    case DELETE_PRODUCT:
+      return products.filter((product) => product.id !== action.payload);
     default:
       return products;
   }

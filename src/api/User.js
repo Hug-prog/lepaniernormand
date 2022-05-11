@@ -17,3 +17,19 @@ export const getLikedProducts = () => {
       .catch((err) => console.log(err));
   };
 };
+
+export const likeProduct = (id) => {
+  return (dispatch) => {
+    API.patch(`api/user/like/product/${id}`).then((res) =>
+      console.log(res.data)
+    );
+  };
+};
+
+export const unLikeProduct = (id) => {
+  return (dispatch) => {
+    API.patch(`api/user/unlike/product/${id}`).then((res) =>
+      console.log(res.data)
+    );
+  };
+};

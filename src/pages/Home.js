@@ -5,15 +5,18 @@ import { Link } from "react-router-dom";
 import CategoryCard from "../components/Category/CategoryCard";
 import ProductCard from "../components/Product/ProductCard";
 import { getAllProducts } from "../api/Product";
+import { getCurrentUser } from "../api/User";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categoriesReducer);
-  const products = useSelector(state => state.productsReducer);
+  const categories = useSelector((state) => state.categoriesReducer);
+  const products = useSelector((state) => state.productsReducer);
+  const user = useSelector((state) => state.userReducer);
 
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getAllProducts());
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
@@ -50,7 +53,7 @@ export default function Home() {
         <div className="sm:flex sm:flex-wrap">
           {products
             ? products.map((product, i) => (
-                <ProductCard product={product} key={i} />
+                <ProductCard product={product} user={user} key={i} />
               ))
             : ""}
         </div>
