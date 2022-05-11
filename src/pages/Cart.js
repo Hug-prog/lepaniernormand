@@ -17,10 +17,10 @@ export default function Cart() {
         <table className="m-auto bg-third rounded shadow-md shadow-third text-center ">
           <thead className=" border-b-2">
             <tr>
-              <th className="p-2 lg:p-10 2xl:px-36">Produit</th>
-              <th className="p-2 lg:p-10 2xl:px-36">Quantite</th>
-              <th className="p-2 lg:p-10 2xl:px-36">Prix</th>
-              <th className="p-2 lg:p-10 2xl:px-36">Actions</th>
+              <th className="p-2 lg:p-10 2xl:px-32">Produit</th>
+              <th className="p-2 lg:p-10 2xl:px-32">Quantite</th>
+              <th className="p-2 lg:p-10 2xl:px-32">Prix</th>
+              <th className="p-2 lg:p-10 2xl:px-32">Actions</th>
             </tr>
           </thead>
           <tbody>
