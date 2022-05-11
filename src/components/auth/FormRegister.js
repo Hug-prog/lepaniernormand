@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { register } from "../../api/Auth";
+import GeoInput from "../geo/GeoInput";
 
 export default function FormRegister() {
   const formData = new FormData();
@@ -17,6 +18,15 @@ export default function FormRegister() {
   const [user, setUser] = useState(initForm);
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const handleAdress = (adresse) => {
+    setUser({
+      ...user,
+      houseNumber: adresse.housenumber,
+      street: adresse.street,
+      postCode: adresse.postcode,
+      city: adresse.city,
+    });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +84,8 @@ export default function FormRegister() {
           value={user.confirmPassword}
           onChange={(e) => handleChange(e)}
         />
-        <div>
+        <GeoInput parentCallback={handleAdress} />
+        {/*<div>
           <input
             className="w-1/5 p-3"
             type="text"
@@ -109,7 +120,7 @@ export default function FormRegister() {
             value={user.city}
             onChange={(e) => handleChange(e)}
           />
-        </div>
+          </div>*/}
         <input type="submit" />
       </form>
     </div>

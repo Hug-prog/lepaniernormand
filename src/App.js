@@ -6,7 +6,6 @@ import Router from "./router/Router";
 
 function App() {
   const modal = useSelector((state) => state.modalReducer);
-
   return (
     <div className="m-auto bg-four">
       <Navbar />
