@@ -5,11 +5,11 @@ import Navbar from "./components/Navbar";
 import Router from "./router/Router";
 
 function App() {
-  const modal = useSelector((state) => state.modalReducer);
+  const modal = useSelector(state => state.modalReducer);
   return (
-    <div className="m-auto bg-four">
+    <div className="w-screen h-auto m-auto bg-four ">
       <Navbar />
-      <div className=" w-full" style={{ minHeight: "80vh" }}>
+      <div className=" w-full h-auto min-h-screen">
         <Modal state={modal} />
         <Router />
       </div>
