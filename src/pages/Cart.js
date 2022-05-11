@@ -17,24 +17,26 @@ export default function Cart() {
         <table className="m-auto bg-third rounded shadow-md shadow-third text-center ">
           <thead className=" border-b-2">
             <tr>
-              <th className="p-2 lg:p-10">Produit</th>
-              <th className="p-2 lg:p-10">Quantite</th>
-              <th className="p-2 lg:p-10">Prix</th>
-              <th className="p-2 lg:p-10">Actions</th>
+              <th className="p-2 lg:p-10 2xl:px-36">Produit</th>
+              <th className="p-2 lg:p-10 2xl:px-36">Quantite</th>
+              <th className="p-2 lg:p-10 2xl:px-36">Prix</th>
+              <th className="p-2 lg:p-10 2xl:px-36">Actions</th>
             </tr>
           </thead>
           <tbody>
             {cartProducts.map((cartProduct, i) => (
               <tr key={i}>
                 <td>
-                  <div className="mt-3 sm:p-6 sm:flex sm:justify-center sm:items-center">
+                  <div className="mt-3 sm:p-6 sm:flex text-justify ">
                     <div
                       className=" h-16 w-16 bg-center bg-cover border-main border-2"
                       style={{
                         backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${cartProduct.product.images[0]})`,
                       }}
                     ></div>
-                    <p className="sm:ml-6"> {cartProduct.product.libelle}</p>
+                    <p className="sm:ml-6 text-ellipsis overflow-hidden  w-24 sm:w-auto">
+                      {cartProduct.product.libelle}
+                    </p>
                   </div>
                 </td>
                 <td className="border-x-2">
@@ -46,8 +48,8 @@ export default function Cart() {
                 </td>
 
                 <td>
-                  <div className="flex sm:p-6">
-                    <AiOutlineHeart className="ml-3 lg:ml-5 mr-3" />
+                  <div className="flex sm:p-6 justify-center">
+                    <AiOutlineHeart className=" mr-3" />
                     <MdOutlineRemoveShoppingCart
                       onClick={() =>
                         dispatch({
@@ -62,7 +64,7 @@ export default function Cart() {
             ))}
           </tbody>
         </table>
-        <div className="w-56 h-72 m-auto mt-6 bg-third text-center rounded shadow-md shadow-third">
+        <div className="w-56 h-72 2xl:w-96 2xl:h-96 m-auto mt-6 bg-third text-center rounded shadow-md shadow-third">
           <h1 className="font-bold relative top-3 ">Commande</h1>
           <div className="m-4 mt-10">
             <input className="rounded-l-lg w-32 p-1" />

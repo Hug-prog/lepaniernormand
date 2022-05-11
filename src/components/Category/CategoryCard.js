@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CategoryCard({ category }) {
   return (
-    <div className=" w-20 h-20 sm:w-32 sm:h-32 bg-third rounded shadow-md shadow-third mt-4 m-auto ">
+    <div className=" w-20 h-20 sm:w-32 sm:h-32 2xl:w-40 2xl:h-40 bg-third rounded shadow-md shadow-third mt-4 m-auto ">
       <Link to={"/categories"} state={category.id}>
         <div
           className="w-full h-2/3 m-auto rounded"
@@ -14,7 +14,7 @@ export default function CategoryCard({ category }) {
             backgroundSize: "cover",
           }}
         ></div>
-        <h1 className=" text-center ">{category.libelle}</h1>
+        <h1 className=" text-center 2xl:text-2xl ">{category.libelle}</h1>
       </Link>
     </div>
   );
