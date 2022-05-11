@@ -28,7 +28,7 @@ export default function Home() {
                 <Link
                   to={"/categories"}
                   state={category.id}
-                  className="font-bold  2xl:text-2xl"
+                  className="font-bold  2xl:text-xl"
                 >
                   {category.libelle}
                 </Link>
@@ -37,9 +37,9 @@ export default function Home() {
           : ""}
       </ul>
 
-      <div className="mt-5 w-5/6 h-auto m-auto 2xl:mt-28">
-        <h1 className="text-center font-bold 2xl:text-2xl">Catégories</h1>
-        <div className=" flex flex-wrap">
+      <div className="mt-5 w-5/6 h-auto m-auto 2xl:mt-10">
+        <h1 className="text-center font-bold 2xl:text-xl">Catégories</h1>
+        <div className=" flex flex-wrap 2xl:mt-6">
           {categories
             ? categories.map((category, i) => (
                 <CategoryCard category={category} key={i} />
@@ -48,8 +48,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-5 w-5/6 h-auto m-auto">
-        <h1 className="font-bold 2xl:text-3xl">Top Produits</h1>
+      <div className="mt-5 w-5/6 h-auto m-auto 2xl:mt-10">
+        <h1 className="font-bold 2xl:text-xl">Top Produits</h1>
         <div className="sm:flex sm:flex-wrap">
           {products
             ? products.map((product, i) => (
