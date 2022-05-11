@@ -7,6 +7,7 @@ module.exports = {
         second: "#FFBA3B",
         thrid: "#F9F9F9",
         four: "#F9F6FF",
+        five: "#8B8B8B",
       },
     },
   },
