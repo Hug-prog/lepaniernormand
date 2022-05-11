@@ -8,8 +8,8 @@ import { getAllProducts } from "../api/Product";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categoriesReducer);
-  const products = useSelector(state => state.productsReducer);
+  const categories = useSelector((state) => state.categoriesReducer);
+  const products = useSelector((state) => state.productsReducer);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -19,13 +19,19 @@ export default function Home() {
   return (
     <div className="w-full h-auto mt-5">
       <ul className="flex flex-wrap justify-center items-center">
-        {categories.map((category, i) => (
-          <li className="mr-5" key={i}>
-            <Link to={"/categories"} state={category.id} className="font-bold">
-              {category.libelle}
-            </Link>
-          </li>
-        ))}
+        {categories
+          ? categories.map((category, i) => (
+              <li className="mr-5" key={i}>
+                <Link
+                  to={"/categories"}
+                  state={category.id}
+                  className="font-bold"
+                >
+                  {category.libelle}
+                </Link>
+              </li>
+            ))
+          : ""}
       </ul>
 
       <div className="mt-5 w-5/6 h-auto m-auto">
@@ -42,9 +48,11 @@ export default function Home() {
       <div className="mt-5 w-5/6 h-auto m-auto">
         <h1 className="font-bold">Top Produits</h1>
         <div className="sm:flex sm:flex-wrap">
-          {products.map((product, i) => (
-            <ProductCard product={product} key={i} />
-          ))}
+          {products
+            ? products.map((product, i) => (
+                <ProductCard product={product} key={i} />
+              ))
+            : ""}
         </div>
       </div>
     </div>

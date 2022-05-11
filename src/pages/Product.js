@@ -1,25 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../api/Product";
 import { ADD_PRODUCT_CART } from "../constants/cart";
 
 export default function Product() {
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const location = useLocation();
-  const products = useSelector(state => state.productsReducer);
-  const product = products.find(product => product.id === location.state);
+  const product = useSelector(state => state.productsReducer[0]);
+  useEffect(() => {
+    if (id !== undefined) {
+      dispatch(getProductById(id));
+    }
+  }, [id, dispatch]);
+
   const [quantity, setQuantity] = useState(1);
-  const [image, setImage] = useState(product.images[0]);
+  const [image, setImage] = useState(0);
 
   const handleChange = e => {
-    console.log(quantity);
     setQuantity(e.target.value);
   };
   const quantityChoice = [];
-  for (let i = 1; i < product.stock + 1; i++) {
-    quantityChoice.push(i);
+  if (product !== undefined) {
+    for (let i = 1; i < product.stock + 1; i++) {
+      quantityChoice.push(i);
+    }
   }
 
+  if (product === undefined) {
+    return (
+      <>
+        <p>Loading ...</p>
+      </>
+    );
+  }
   return (
     <div className="w-sreen h-screen">
       <div className=" w-11/12 h-auto m-auto mt-10">
@@ -31,7 +45,7 @@ export default function Product() {
               style={{
                 backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image}`,
               }}
-              onClick={() => setImage(image)}
+              onClick={() => setImage(i)}
             ></div>
           ))}
         </div>
@@ -40,7 +54,7 @@ export default function Product() {
           <div
             className="w-40 h-40 lg:w-72 lg:h-72 bg-white bg-cover bg-center m-auto"
             style={{
-              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${image})`,
+              backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[image]})`,
             }}
           ></div>
 

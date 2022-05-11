@@ -1,14 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import Router from "./router/Router";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {}, [dispatch]);
-
   const modal = useSelector((state) => state.modalReducer);
   return (
     <div className="m-auto bg-four">
