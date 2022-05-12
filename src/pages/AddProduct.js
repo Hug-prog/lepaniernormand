@@ -3,7 +3,7 @@ import FormProduct from "../components/Product/FormProduct";
 
 export default function AddProduct() {
   return (
-    <div>
+    <div className="w-full h-auto">
       <FormProduct />
     </div>
   );
