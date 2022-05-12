@@ -4,7 +4,7 @@ import { GET_USER, LIKE_PRODUCT, UNLIKE_PRODUCT } from "../constants/user";
 
 export const getCurrentUser = () => {
   return (dispatch) => {
-    API.get("/api/currentuser")
+    API.get("/api/user")
       .then((res) => dispatch({ type: GET_USER, payload: res.data }))
       .catch((err) => console.log(err));
   };
