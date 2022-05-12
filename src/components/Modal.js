@@ -3,17 +3,18 @@ import { useDispatch } from "react-redux";
 import { ClOSEMODAL, LOGIN, REGISTER } from "../constants/modal";
 import FormLogin from "../components/auth/FormLogin";
 import FormRegister from "./auth/FormRegister";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
-  const modalShow = (show) => {
+  const modalShow = show => {
     if (show) {
       return "";
     } else {
       return "hidden";
     }
   };
-  const displayComponent = (component) => {
+  const displayComponent = component => {
     switch (component) {
       case LOGIN:
         return <FormLogin />;
@@ -27,7 +28,12 @@ export default function Modal(props) {
         props.state.show
       )}`}
     >
-      <button onClick={() => dispatch({ type: ClOSEMODAL })}>X</button>
+      <button
+        className=" float-right m-5"
+        onClick={() => dispatch({ type: ClOSEMODAL })}
+      >
+        <AiOutlineCloseCircle className="text-2xl lg:text-3xl hover:text-red-800" />
+      </button>
       {displayComponent(props.state.component)}
     </div>
   );

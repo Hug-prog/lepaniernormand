@@ -35,7 +35,7 @@ export default function FormCateg() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-main shadow-md text-white shadow-main rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-white shadow-md text-black shadow-main rounded p-3 m-auto mt-32"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">
@@ -45,7 +45,7 @@ export default function FormCateg() {
         <div className="sm:flex sm:justify-center sm:items-center md:w-3/4 md:m-auto sm:mb-3">
           <label className="2xl:text-xl sm:mr-3">nom category</label>
           <input
-            className="block w-56 mb-3 bg-main border-b-2 border-white outline-none"
+            className="block w-56 mb-3  border-b-2 border-black outline-none"
             type={"text"}
             name={"libelle"}
             value={category.libelle}
@@ -66,7 +66,7 @@ export default function FormCateg() {
 
         <div className="w-full h-10 flex justify-center">
           <button
-            className="bg-white text-main rounded px-10 2xl:text-xl"
+            className="bg-main text-white rounded px-10 2xl:text-xl"
             type="submit"
           >
             Ajouter
