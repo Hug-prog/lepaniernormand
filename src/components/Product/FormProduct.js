@@ -61,74 +61,108 @@ export default function FormProduct() {
   };
 
   return (
-    <div>
-      <form onSubmit={e => handleSubmit(e)}>
-        <label>libelle</label>
-        <input
-          type={"text"}
-          name={"libelle"}
-          value={product.libelle}
-          onChange={e => handleChange(e)}
-          className="block"
-        />
+    <div className="w-screen h-screen">
+      <form
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-main shadow-md text-white shadow-main rounded p-3 m-auto mt-32"
+        onSubmit={e => handleSubmit(e)}
+      >
+        <div className="w-full h-auto text-center mb-5 font-bold">
+          <h1 className="2xl:text-xl">Ajouter un Produit</h1>
+        </div>
 
-        <label>prix</label>
-        <input
-          type={"text"}
-          name={"price"}
-          value={product.price}
-          onChange={e => handleChange(e)}
-          className="block"
-        />
+        <div className="sm:flex sm:justify-around sm:items-center lg:w-2/3 lg:m-auto sm:mb-3">
+          <label className="2xl:text-xl lg:mr-2">Libelle</label>
+          <input
+            type={"text"}
+            name={"libelle"}
+            value={product.libelle}
+            onChange={e => handleChange(e)}
+            className="block w-56 mb-3 bg-main border-b-2 border-white active:border-none outline-none"
+          />
 
-        <label>stock</label>
-        <input
-          type={"text"}
-          name={"stock"}
-          value={product.stock}
-          onChange={e => handleChange(e)}
-          className="block"
-        />
+          <label className="2xl:text-xl lg:mx-2">Prix</label>
+          <input
+            type={"text"}
+            name={"price"}
+            value={product.price}
+            onChange={e => handleChange(e)}
+            className="block w-56 mb-3 sm:mb-6 bg-main border-b-2 border-white outline-none"
+          />
+        </div>
 
-        <label className="block">description</label>
+        <div className="sm:flex sm:justify-center sm:items-center">
+          <label className="sm:mr-2 2xl:text-xl">Stock</label>
+          <input
+            type={"text"}
+            name={"stock"}
+            value={product.stock}
+            onChange={e => handleChange(e)}
+            className="block w-56 mb-3 bg-main border-b-2 border-white outline-none"
+          />
+        </div>
+
+        <label className="block 2xl:text-xl ">Description</label>
         <input
+          className=" w-56 sm:w-full mb-3 bg-main border-b-2 border-white outline-none"
           type={"text"}
           name={"description"}
           value={product.description}
           onChange={e => handleChange(e)}
         />
-        <label className="block">seller</label>
-        <select name="sellerId" onChange={e => handleChange(e)}>
-          <option value="">seller</option>
-          {sellers
-            ? sellers.map((seller, i) => (
-                <option key={i} value={seller.id}>
-                  {seller.libelle}
-                </option>
-              ))
-            : ""}
-        </select>
 
-        <label className="block">categories</label>
-        <select name="categoriesId" onChange={e => handleChangeCategories(e)}>
-          <option value="">categorie</option>
-          {categories
-            ? categories.map((category, i) => (
-                <option key={i} value={category.id}>
-                  {category.libelle}
-                </option>
-              ))
-            : ""}
-        </select>
+        <div className=" flex justify-around mb-3 lg:w-2/4 lg:m-auto">
+          <label className="2xl:text-xl">Vendeur</label>
+          <select
+            className="rounded w-24 bg-main"
+            name="sellerId"
+            onChange={e => handleChange(e)}
+          >
+            <option value="seller">Vendeur</option>
+            {sellers
+              ? sellers.map((seller, i) => (
+                  <option key={i} value={seller.id}>
+                    {seller.libelle}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </div>
 
-        <label className="block">images</label>
+        <div className="flex justify-around mb-3 lg:w-2/4 lg:m-auto lg:my-3">
+          {" "}
+          <label className="block 2xl:text-xl">Categories</label>
+          <select
+            className="rounded w-24 bg-main"
+            name="categoriesId"
+            onChange={e => handleChangeCategories(e)}
+          >
+            <option value="">Categorie</option>
+            {categories
+              ? categories.map((category, i) => (
+                  <option key={i} value={category.id}>
+                    {category.libelle}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </div>
+
+        <label className="block 2xl:text-xl">Images</label>
         <input
+          className="text-sm mb-3 2xl:text-xl"
           type={"file"}
           name="images"
           onInput={e => handleFiles(e)}
           multiple
         />
-        <button type="submit">ajouter</button>
+        <div className="w-full h-10 flex justify-center">
+          <button
+            className="bg-white text-main rounded px-10 2xl:text-xl"
+            type="submit"
+          >
+            Ajouter
+          </button>
+        </div>
       </form>
     </div>
   );
