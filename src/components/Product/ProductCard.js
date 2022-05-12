@@ -36,23 +36,21 @@ export default function ProductCard({ product, user }) {
             backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
           }}
         ></div>
-        <p className="mt-4 ml-3 2xl:text-xl text-ellipsis overflow-hidden  w-24 ">
-          {product.libelle}
-        </p>
-        <p className="font-bold mt-2 ml-3 2xl:text-xl">{product.price}</p>
+        <p className="mt-4 ml-3 2xl:text-md break-words">{product.libelle}</p>
+        <p className="font-bold mt-2 ml-3 2xl:text-sm">{product.price} €</p>
       </Link>
 
-      <button
+      <div
         onClick={() =>
           dispatch({
             type: ADD_PRODUCT_CART,
             payload: { product, quantity: 1 },
           })
         }
-        className="mt-4 ml-3 bg-main text-white rounded pl-4 pr-4 pt-2 pb-2 2xl:text-md"
+        className="bg-main text-white rounded px-4 py-2 2xl:text-md mx-auto w-3/4 mt-4 cursor-pointer"
       >
         Ajouter au Pannier
-      </button>
+      </div>
     </div>
   );
 }
