@@ -36,7 +36,9 @@ export default function ProductCard({ product, user }) {
             backgroundImage: `url(http://127.0.0.1:8000/uploads/product/${product.images[0]})`,
           }}
         ></div>
-        <p className="mt-4 ml-3 2xl:text-xl">{product.libelle}</p>
+        <p className="mt-4 ml-3 2xl:text-xl text-ellipsis overflow-hidden  w-24 ">
+          {product.libelle}
+        </p>
         <p className="font-bold mt-2 ml-3 2xl:text-xl">{product.price}</p>
       </Link>
 

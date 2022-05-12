@@ -14,7 +14,9 @@ export default function CategoryCard({ category }) {
             backgroundSize: "cover",
           }}
         ></div>
-        <h1 className=" text-center 2xl:text-xl ">{category.libelle}</h1>
+        <h1 className=" text-center 2xl:text-xl text-ellipsis overflow-hidden m-auto w-18 sm:w-24  ">
+          {category.libelle}
+        </h1>
       </Link>
     </div>
   );
