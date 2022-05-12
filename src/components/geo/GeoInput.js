@@ -5,28 +5,28 @@ export default function GeoInput({ parentCallback }) {
   const [suggestions, setSuggestions] = useState([]);
   const [value, setValue] = useState("");
 
-  const getGeoLocation = (query) => {
+  const getGeoLocation = query => {
     if (query !== "") {
       axios
         .get(
           `https://api-adresse.data.gouv.fr/search/?q=${query}&type=housenumber&autocomplete=1`
         )
-        .then((res) => {
+        .then(res => {
           if (res.data.features !== []) {
             setSuggestions(res.data.features);
           }
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     }
   };
   return (
     <div className="w-full text-center">
       <input
-        className="w-3/4 p-3"
+        className="w-3/4 p-3 border-b-2 border-black outline-none mb-4"
         type={"text"}
         value={value}
         placeholder="n rue code postal ville"
-        onChange={(e) => {
+        onChange={e => {
           setValue(e.target.value);
           getGeoLocation(e.target.value);
         }}

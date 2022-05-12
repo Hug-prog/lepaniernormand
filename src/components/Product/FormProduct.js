@@ -63,7 +63,7 @@ export default function FormProduct() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-main shadow-md text-white shadow-main rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-third shadow-md bg-white shadow-main rounded p-3 m-auto mt-32"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">
@@ -77,7 +77,7 @@ export default function FormProduct() {
             name={"libelle"}
             value={product.libelle}
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3 bg-main border-b-2 border-white active:border-none outline-none"
+            className="block w-56 mb-3  border-b-2 border-black active:border-none outline-none"
           />
 
           <label className="2xl:text-xl lg:mx-2">Prix</label>
@@ -86,7 +86,7 @@ export default function FormProduct() {
             name={"price"}
             value={product.price}
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3 sm:mb-6 bg-main border-b-2 border-white outline-none"
+            className="block w-56 mb-3 sm:mb-6  border-b-2 border-black outline-none"
           />
         </div>
 
@@ -97,13 +97,13 @@ export default function FormProduct() {
             name={"stock"}
             value={product.stock}
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3 bg-main border-b-2 border-white outline-none"
+            className="block w-56 mb-3  border-b-2 border-black outline-none"
           />
         </div>
 
         <label className="block 2xl:text-xl ">Description</label>
         <input
-          className=" w-56 sm:w-full mb-3 bg-main border-b-2 border-white outline-none"
+          className=" w-56 sm:w-full mb-3  border-b-2 border-black outline-none"
           type={"text"}
           name={"description"}
           value={product.description}
@@ -113,7 +113,7 @@ export default function FormProduct() {
         <div className=" flex justify-around mb-3 lg:w-2/4 lg:m-auto">
           <label className="2xl:text-xl">Vendeur</label>
           <select
-            className="rounded w-24 bg-main"
+            className="rounded w-24 "
             name="sellerId"
             onChange={e => handleChange(e)}
           >
@@ -132,7 +132,7 @@ export default function FormProduct() {
           {" "}
           <label className="block 2xl:text-xl">Categories</label>
           <select
-            className="rounded w-24 bg-main"
+            className="rounded w-24 "
             name="categoriesId"
             onChange={e => handleChangeCategories(e)}
           >
@@ -157,7 +157,7 @@ export default function FormProduct() {
         />
         <div className="w-full h-10 flex justify-center">
           <button
-            className="bg-white text-main rounded px-10 2xl:text-xl"
+            className="bg-main text-white rounded px-10 2xl:text-xl"
             type="submit"
           >
             Ajouter

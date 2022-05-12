@@ -10,36 +10,36 @@ export default function FormLogin() {
     password: "",
   };
   const [user, setUser] = useState(initForm);
-  const handleChange = (e) => {
+  const handleChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     login(user);
   };
   return (
     <div style={{ minHeight: "300px" }}>
-      <p>Se connecter</p>
+      <p className="font-bold m-6">Se connecter</p>
       <form
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={e => handleSubmit(e)}
         className="h-72 flex flex-col items-center justify-around"
       >
         <input
-          className="w-3/4 p-3"
+          className="w-3/4 p-3 border-b-2 border-black outline-none"
           type={"email"}
           name="username"
           value={user.username}
           placeholder="Adresse e-mail"
-          onChange={(e) => handleChange(e)}
+          onChange={e => handleChange(e)}
           required
         />
         <input
-          className=" w-3/4 p-3"
+          className=" w-3/4 p-3 border-b-2 border-black outline-none"
           type="password"
           name="password"
           placeholder="mot de passe"
           value={user.password}
-          onChange={(e) => handleChange(e)}
+          onChange={e => handleChange(e)}
           required
         />
         <p onClick={() => dispatch({ type: REGISTER })}>
