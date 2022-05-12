@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { likeProduct, unLikeProduct } from "../../api/User";
@@ -9,7 +9,7 @@ export default function ProductCard({ product, user }) {
   const dispatch = useDispatch();
   return (
     <div className="w-48 2xl:w-56 h-72 2xl:h-80 bg-third rounded shadow-md shadow-third mt-4 m-auto pb-2">
-      <div className="flex justify-end">
+      <div className="flex justify-end cursor-pointer">
         {user.likedProducts !== undefined ? (
           <>
             {user.likedProducts.indexOf(product.id) < 0 ? (
@@ -18,8 +18,8 @@ export default function ProductCard({ product, user }) {
                 onClick={() => dispatch(likeProduct(product.id))}
               />
             ) : (
-              <AiOutlineHeart
-                className=" 2xl:text-2xl"
+              <AiFillHeart
+                className=" 2xl:text-2xl fill-red-600"
                 onClick={() => dispatch(unLikeProduct(product.id))}
               />
             )}

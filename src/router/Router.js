@@ -8,7 +8,7 @@ import Seller from "../pages/admin/Seller";
 import Cart from "../pages/Cart";
 import Categories from "../pages/Categories";
 import Home from "../pages/Home";
-import LikedProducts from "../pages/LikedProducts";
+import WishList from "../pages/WishList";
 import Product from "../pages/Product";
 import Profil from "../pages/Profil";
 import Register from "../pages/Register";
@@ -29,7 +29,7 @@ export default function Router() {
       <Route path="/register" element={<Register />} />
       <Route path="/admin/sellers" element={<Seller />} />
       <Route path="/profil" element={<Profil />} />
-      <Route path="/wishlist" element={<LikedProducts />} />
+      <Route path="/wishlist" element={<WishList />} />
     </Routes>
   );
 }
