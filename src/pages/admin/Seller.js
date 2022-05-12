@@ -5,7 +5,6 @@ import { deleteSeller, getSellers } from "../../api/Seller";
 export default function Seller() {
   const dispatch = useDispatch();
   const sellers = useSelector((state) => state.sellersReducer);
-  console.log(sellers);
   useEffect(() => {
     dispatch(getSellers());
   }, [dispatch]);
