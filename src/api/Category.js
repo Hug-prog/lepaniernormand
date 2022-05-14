@@ -1,6 +1,10 @@
 import axios from "axios";
 import { API } from ".";
-import { ADD_CATEGORY, GET_CATEGORIES } from "../constants/categories";
+import {
+  ADD_CATEGORY,
+  DELETE_CATEGORY,
+  GET_CATEGORIES,
+} from "../constants/categories";
 import { GET_PRODUCTSBYCATEGORIESID } from "../constants/products";
 
 export const getCategories = () => {
@@ -30,6 +34,14 @@ export const addCategory = (category) => {
         },
       })
       .then((res) => dispatch({ type: ADD_CATEGORY, payload: res.data }))
+      .catch((err) => console.log(err));
+  };
+};
+
+export const deleteCategory = (categoryId) => {
+  return (dispatch) => {
+    API.delete(`/api/categories/${categoryId}`)
+      .then((res) => dispatch({ type: DELETE_CATEGORY, payload: categoryId }))
       .catch((err) => console.log(err));
   };
 };
