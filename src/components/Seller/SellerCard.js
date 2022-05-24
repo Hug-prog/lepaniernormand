@@ -10,7 +10,7 @@ export default function SellerCard({ seller }) {
       <p className="lg:text-2xl font-bold">Information Vendeur</p>
       <Link
         to={`/sellers/${seller.id}`}
-        className="flex items-center justify-around w-full"
+        className="flex items-center justify-around w-full mt-5"
       >
         <div
           className="bg-third rounded shadow-md shadow-third w-4 h-4 lg:w-10 lg:h-10 bg-cover bg-center"

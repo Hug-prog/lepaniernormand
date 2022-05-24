@@ -14,6 +14,7 @@ import Profil from "../pages/Profil";
 import Register from "../pages/Register";
 import SellerPage from "../pages/SellerPage";
 import CategoriesAdmin from "../pages/admin/CategoriesAdmin";
+import ProductsAdmin from "../pages/admin/ProductsAdmin";
 
 export default function Router() {
   useEffect(() => {});
@@ -26,7 +27,6 @@ export default function Router() {
         <Route path="categories" element={<Categories />} />
         <Route path="product/:id" element={<Product />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="products/add" element={<AddProduct />} />
         <Route path="sellers/:id" element={<SellerPage />} />
         <Route path="register" element={<Register />} />
         <Route path="profil" element={<Profil />} />
@@ -39,6 +39,10 @@ export default function Router() {
           <Route path="categories">
             <Route index element={<CategoriesAdmin />} />
             <Route path="add" element={<AddCategory />} />
+          </Route>
+          <Route path="products">
+            <Route index element={<ProductsAdmin />} />
+            <Route path="add" element={<AddProduct />} />
           </Route>
         </Route>
       </Route>

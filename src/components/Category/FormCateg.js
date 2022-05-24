@@ -35,7 +35,7 @@ export default function FormCateg() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-cover bg-center text-black  rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-cover bg-center text-black  rounded p-3 m-auto mt-32 shadow-md"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">

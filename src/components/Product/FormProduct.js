@@ -63,7 +63,7 @@ export default function FormProduct() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-third text-black  bg-left-top rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-third text-black  bg-left-top rounded p-3 m-auto mt-32 shadow-lg"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">
@@ -102,7 +102,7 @@ export default function FormProduct() {
         </div>
 
         <textarea
-          className=" w-56 sm:w-full mb-3  bg-transparent border-b placeholder:text-black  border-black outline-none"
+          className=" w-56 sm:w-4/5 sm:ml-20 2xl:ml-28 mb-3  bg-transparent border-b placeholder:text-black  border-black outline-none"
           type={"text"}
           placeholder="Description"
           name={"description"}
