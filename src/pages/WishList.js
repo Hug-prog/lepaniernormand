@@ -5,8 +5,8 @@ import ProductCard from "../components/Product/ProductCard";
 
 export default function WishList() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productsReducer);
-  const user = useSelector((state) => state.userReducer);
+  const products = useSelector(state => state.productsReducer);
+  const user = useSelector(state => state.userReducer);
   useEffect(() => {
     dispatch(getCurrentUser());
     dispatch(getLikedProducts());
@@ -14,7 +14,7 @@ export default function WishList() {
   return (
     <div>
       <p>Mes Favoris</p>
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-3 gap-4">
         {products.map((product, i) => (
           <ProductCard key={i} user={user} product={product} />
         ))}

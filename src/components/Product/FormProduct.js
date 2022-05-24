@@ -63,7 +63,7 @@ export default function FormProduct() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-third shadow-md bg-white shadow-main rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-2/3 h-auto bg-third text-black  bg-left-top rounded p-3 m-auto mt-32"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">
@@ -71,49 +71,49 @@ export default function FormProduct() {
         </div>
 
         <div className="sm:flex sm:justify-around sm:items-center lg:w-2/3 lg:m-auto sm:mb-3">
-          <label className="2xl:text-xl lg:mr-2">Libelle</label>
           <input
             type={"text"}
             name={"libelle"}
             value={product.libelle}
+            placeholder="Name"
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3  border-b-2 border-black active:border-none outline-none"
+            className="block w-56 mb-3 mr-4 bg-transparent border-b placeholder:text-black border-black outline-none"
           />
 
-          <label className="2xl:text-xl lg:mx-2">Prix</label>
           <input
             type={"text"}
             name={"price"}
             value={product.price}
+            placeholder="Prix"
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3 sm:mb-6  border-b-2 border-black outline-none"
+            className="block w-56 mb-3 bg-transparent  border-b placeholder:text-black  border-black outline-none"
           />
         </div>
 
         <div className="sm:flex sm:justify-center sm:items-center">
-          <label className="sm:mr-2 2xl:text-xl">Stock</label>
           <input
             type={"text"}
             name={"stock"}
             value={product.stock}
+            placeholder="Stock"
             onChange={e => handleChange(e)}
-            className="block w-56 mb-3  border-b-2 border-black outline-none"
+            className="block w-56 mb-3 bg-transparent border-b placeholder:text-black border-black outline-none"
           />
         </div>
 
-        <label className="block 2xl:text-xl ">Description</label>
-        <input
-          className=" w-56 sm:w-full mb-3  border-b-2 border-black outline-none"
+        <textarea
+          className=" w-56 sm:w-full mb-3  bg-transparent border-b placeholder:text-black  border-black outline-none"
           type={"text"}
+          placeholder="Description"
           name={"description"}
           value={product.description}
           onChange={e => handleChange(e)}
         />
 
         <div className=" flex justify-around mb-3 lg:w-2/4 lg:m-auto">
-          <label className="2xl:text-xl">Vendeur</label>
+          <label className="2xl:text-xl">Vendeur :</label>
           <select
-            className="rounded w-24 "
+            className="rounded w-24 bg-transparent outline-none  "
             name="sellerId"
             onChange={e => handleChange(e)}
           >
@@ -130,9 +130,9 @@ export default function FormProduct() {
 
         <div className="flex justify-around mb-3 lg:w-2/4 lg:m-auto lg:my-3">
           {" "}
-          <label className="block 2xl:text-xl">Categories</label>
+          <label className="block 2xl:text-xl">Categories :</label>
           <select
-            className="rounded w-24 "
+            className="rounded w-24  bg-transparent outline-none "
             name="categoriesId"
             onChange={e => handleChangeCategories(e)}
           >
@@ -149,7 +149,7 @@ export default function FormProduct() {
 
         <label className="block 2xl:text-xl">Images</label>
         <input
-          className="text-sm mb-3 2xl:text-xl"
+          className="text-sm mb-3 2xl:text-xl file:bg-transparent file:border file:border-black file:text-black cursor-pointer"
           type={"file"}
           name="images"
           onInput={e => handleFiles(e)}
