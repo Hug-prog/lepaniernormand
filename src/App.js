@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Router from "./router/Router";
 
 function App() {
-  const modal = useSelector(state => state.modalReducer);
+  const modal = useSelector((state) => state.modalReducer);
   return (
     <div className="w-full h-auto m-auto bg-four">
       <Navbar />
