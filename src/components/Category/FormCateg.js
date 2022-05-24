@@ -35,38 +35,39 @@ export default function FormCateg() {
   return (
     <div className="w-screen h-screen">
       <form
-        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-white shadow-md text-black shadow-main rounded p-3 m-auto mt-32"
+        className="w-72 sm:w-3/4 lg:w-2/4 2xl:w-1/3 h-auto bg-cover bg-center text-black  rounded p-3 m-auto mt-32"
         onSubmit={e => handleSubmit(e)}
       >
         <div className="w-full h-auto text-center mb-5 font-bold">
           <h1 className="2xl:text-xl">Ajouter une categorie</h1>
         </div>
 
-        <div className="sm:flex sm:justify-center sm:items-center md:w-3/4 md:m-auto sm:mb-3">
-          <label className="2xl:text-xl sm:mr-3">nom category</label>
-          <input
-            className="block w-56 mb-3  border-b-2 border-black outline-none"
-            type={"text"}
-            name={"libelle"}
-            value={category.libelle}
-            onChange={e => handleChange(e)}
-          />
-        </div>
+        <div className="w-full h-auto flex justify-center ">
+          <div>
+            <input
+              className="block w-56 mb-3 border-b-2 bg-transparent placeholder:text-black border-black outline-none"
+              type={"text"}
+              name={"libelle"}
+              value={category.libelle}
+              placeholder="Name"
+              onChange={e => handleChange(e)}
+            />
 
-        <div className="my-6 sm:ml-20">
-          {" "}
-          <label className="block 2xl:text-xl">image</label>
-          <input
-            className="text-sm mb-3 2xl:text-xl"
-            type={"file"}
-            name={"image"}
-            onChange={e => handleFiles(e)}
-          />
+            <div>
+              <label className="block 2xl:text-xl">Image</label>
+              <input
+                className="text-sm mb-3 2xl:text-xl file:bg-transparent file:border file:border-white file:text-black cursor-pointer"
+                type={"file"}
+                name={"image"}
+                onChange={e => handleFiles(e)}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="w-full h-10 flex justify-center">
           <button
-            className="bg-main text-white rounded px-10 2xl:text-xl"
+            className="bg-main text-black rounded px-10 2xl:text-xl"
             type="submit"
           >
             Ajouter
