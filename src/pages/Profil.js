@@ -8,7 +8,6 @@ export default function Profil() {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-  console.log(user);
   if (user === undefined) {
     return <p>Loading ...</p>;
   }

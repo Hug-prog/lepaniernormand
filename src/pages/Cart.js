@@ -6,7 +6,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const cartProducts = useSelector(state => state.cartReducer);
+  const cartProducts = useSelector((state) => state.cartReducer);
   useEffect(() => {
     dispatch({ type: GET_PRODUCT_CART });
   }, [dispatch]);

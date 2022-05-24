@@ -7,19 +7,21 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
-  const modalShow = show => {
+  const modalShow = (show) => {
     if (show) {
       return "";
     } else {
       return "hidden";
     }
   };
-  const displayComponent = component => {
+  const displayComponent = (component) => {
     switch (component) {
       case LOGIN:
         return <FormLogin />;
       case REGISTER:
         return <FormRegister />;
+      default:
+        return "";
     }
   };
   return (

@@ -12,24 +12,36 @@ import WishList from "../pages/WishList";
 import Product from "../pages/Product";
 import Profil from "../pages/Profil";
 import Register from "../pages/Register";
+import SellerPage from "../pages/SellerPage";
+import CategoriesAdmin from "../pages/admin/CategoriesAdmin";
 
 export default function Router() {
   useEffect(() => {});
 
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/home" element={<Home />}></Route>
-      <Route path="/categories" element={<Categories />}></Route>
-      <Route path="/product/:id" element={<Product />}></Route>
-      <Route path="cart" element={<Cart />} />
-      <Route path="/categories/add" element={<AddCategory />} />
-      <Route path="/products/add" element={<AddProduct />} />
-      <Route path="/seller/add" element={<FormSeller />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/admin/sellers" element={<Seller />} />
-      <Route path="/profil" element={<Profil />} />
-      <Route path="/wishlist" element={<WishList />} />
+      <Route path="/">
+        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="categories" element={<Categories />} />
+        <Route path="product/:id" element={<Product />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="products/add" element={<AddProduct />} />
+        <Route path="sellers/:id" element={<SellerPage />} />
+        <Route path="register" element={<Register />} />
+        <Route path="profil" element={<Profil />} />
+        <Route path="wishlist" element={<WishList />} />
+        <Route path="admin">
+          <Route path="sellers">
+            <Route index element={<Seller />} />
+            <Route path="add" element={<FormSeller />} />
+          </Route>
+          <Route path="categories">
+            <Route index element={<CategoriesAdmin />} />
+            <Route path="add" element={<AddCategory />} />
+          </Route>
+        </Route>
+      </Route>
     </Routes>
   );
 }

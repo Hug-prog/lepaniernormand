@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../api/Product";
+import SellerCard from "../components/Seller/SellerCard";
 import { ADD_PRODUCT_CART } from "../constants/cart";
 
 export default function Product() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector(state => state.productsReducer[0]);
+  const product = useSelector((state) => state.productsReducer[0]);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getProductById(id));
@@ -17,7 +18,7 @@ export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const [image, setImage] = useState(0);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuantity(e.target.value);
   };
   const quantityChoice = [];
@@ -61,9 +62,9 @@ export default function Product() {
           <div className="sm:w-1 sm:h-40 lg:h-60 bg-five sm:ml-10"></div>
 
           <div className="w-2/3 mt-3 m-auto text-center sm:text-justify text-md sm:ml-5 lg:mt-14">
-            <h1 className="font-bold lg:text-3xl">Information Produit</h1>
-
-            <p className="lg:text-xl lg:ml-3">{product.libelle}</p>
+            <p className="lg:text-3xl text-2xl lg:ml-3 font-bold">
+              {product.libelle}
+            </p>
 
             <p className="lg:text-xl lg:ml-3">{product.price} €</p>
 
@@ -72,7 +73,7 @@ export default function Product() {
             <div className="w-full h-16 text-center sm:flex sm:justify-center sm:items-center my-2 sm:my-0">
               <select
                 name="quantity"
-                onChange={e => handleChange(e)}
+                onChange={(e) => handleChange(e)}
                 className="w-20 lg:w-24  sm:h-6 lg:h-10 text-sm border-2 rounded text-center sm:mr-2 "
               >
                 {quantityChoice.map((choice, i) => (
@@ -98,11 +99,7 @@ export default function Product() {
         </div>
 
         <div className="w-56 h-auto sm:h-48 sm:w-56 lg:w-80 lg:h-80 p-2 bg-third rounded shadow-md shadow-third mt-6 sm:mt-0 m-auto">
-          <h1 className="lg:text-3xl font-bold">Information Vendeur</h1>
-          <p>okok</p>
-          <p>okok</p>
-          <p>okok</p>
-          <p>okok</p>
+          <SellerCard seller={product.seller} />
         </div>
       </div>
       <div className=" w-5/6 h-auto mt-6 m-auto">

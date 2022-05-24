@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSeller, getSellers } from "../../api/Seller";
+import { deleteCategory, getCategories } from "../../api/Category";
 
-export default function Seller() {
+export default function CategoriesAdmin() {
   const dispatch = useDispatch();
-  const sellers = useSelector((state) => state.sellersReducer);
+  const categories = useSelector((state) => state.categoriesReducer);
   useEffect(() => {
-    dispatch(getSellers());
+    dispatch(getCategories());
   }, [dispatch]);
   return (
     <div>
-      <p>Vendeur</p>
+      <p>Liste des Categories</p>
       <div>
-        {sellers.map((seller, i) => {
+        {categories.map((categorie, i) => {
           return (
             <div key={i} className="flex items-center">
               <div
                 className="w-16 h-16 bg-center bg-contain bg-no-repeat"
                 style={{
                   backgroundImage: `url(
-                    ${process.env.REACT_APP_API_URL}uploads/seller/${seller.image}
+                    ${process.env.REACT_APP_API_URL}uploads/categorie/${categorie.image}
                   )`,
                 }}
               ></div>
-              <p>{seller.libelle}</p>
+              <p>{categorie.libelle}</p>
               <button
                 className="bg-red-600 text-white p-1.5 rounded-lg"
-                onClick={() => dispatch(deleteSeller(seller.id))}
+                onClick={() => dispatch(deleteCategory(categorie.id))}
               >
                 Delete
               </button>

@@ -1,11 +1,6 @@
 import axios from "axios";
 import { API } from ".";
-import {
-  ADD_SELLER,
-  DELETE_SELLER,
-  GET_SELLERBYID,
-  GET_SELLERS,
-} from "../constants/sellers";
+import { ADD_SELLER, DELETE_SELLER, GET_SELLERS } from "../constants/sellers";
 
 export const getSellers = () => {
   return (dispatch) => {
@@ -18,7 +13,7 @@ export const getSellers = () => {
 export const getSellerById = (id) => {
   return (dispatch) => {
     API.get("/api/sellers/" + id)
-      .then((res) => dispatch({ type: GET_SELLERBYID, payload: res.data }))
+      .then((res) => dispatch({ type: GET_SELLERS, payload: res.data }))
       .catch((err) => console.log(err));
   };
 };
