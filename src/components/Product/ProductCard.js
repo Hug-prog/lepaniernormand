@@ -30,7 +30,7 @@ export default function ProductCard({ product, user }) {
             payload: { product, quantity: 1 },
           })
         }
-        className="bg-main text-white rounded px-4 py-2 2xl:text-md mx-auto w-3/4 mt-4 cursor-pointer"
+        className="bg-main text-white text-xs text-center rounded px-2 py-2 2xl:text-md mx-auto w-3/4 mt-4 cursor-pointer"
       >
         Ajouter au Pannier
       </div>
