@@ -9,17 +9,21 @@ export default function cartReducer(
 ) {
   switch (action.type) {
     case ADD_PRODUCT_CART:
-      let obejctCart = cart.find(
+      let objectCart = cart.find(
         (cartItem) => cartItem.product.id === action.payload.product.id
       );
 
-      if (obejctCart !== undefined) {
-        let index = cart.indexOf(obejctCart);
-        return cart.map((cartItem, i) => {
+      if (objectCart !== undefined) {
+        let index = cart.indexOf(objectCart);
+        cart = cart.map((cartItem, i) => {
           if (i === index) {
+            const newQte = qteChecker(
+              cartItem.product.stock,
+              cartItem.quantity + action.payload.quantity
+            );
             return {
               product: action.payload.product,
-              quantity: cartItem.quantity + action.payload.quantity,
+              quantity: newQte,
             };
           } else return cartItem;
         });
@@ -36,5 +40,13 @@ export default function cartReducer(
       return cart;
     default:
       return cart;
+  }
+}
+
+function qteChecker(maxQte, newQte) {
+  if (newQte > maxQte) {
+    return maxQte;
+  } else {
+    return newQte;
   }
 }
