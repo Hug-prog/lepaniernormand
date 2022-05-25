@@ -13,7 +13,7 @@ export default function categoriesReducer(categories = [], action) {
       categories = [...categories, action.payload];
       return categories;
     case DELETE_CATEGORY:
-      return categories.filter((category) => category !== action.payload);
+      return categories.filter((category) => category.id !== action.payload);
     default:
       return categories;
   }

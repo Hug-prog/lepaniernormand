@@ -41,7 +41,7 @@ export const addCategory = (category) => {
 export const deleteCategory = (categoryId) => {
   return (dispatch) => {
     API.delete(`/api/categories/${categoryId}`)
-      .then((res) => dispatch({ type: DELETE_CATEGORY, payload: categoryId }))
+      .then(() => dispatch({ type: DELETE_CATEGORY, payload: categoryId }))
       .catch((err) => console.log(err));
   };
 };
